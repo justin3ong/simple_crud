@@ -1,1 +1,19 @@
-<p>blog-item works!</p>
+<button type="button" (click)="getBlogs()">Book List</button>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Comments</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let data of blogList">
+        <td>{{data.id}}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.author}}</td>
+        <td>{{data.comments}}</td>
+        <td><button class="button">Edit</button><br><button class="danger">Delete</button></td>
+    </tr>
+</table>

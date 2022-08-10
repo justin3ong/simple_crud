@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Bookinterface } from '../../models/bookinterface';
 
 @Component({
   selector: 'app-book-list',

@@ -1,1 +1,24 @@
+<h1>Angular Exercise</h1>
+<div>
+    <table>
+        <tr>
+            <td>Book</td>
+            <td>Blog</td>
+            <td>User</td>
+        </tr>
+        <tr>
+            <td>
+                <button [routerLink]="['/book']">Book items</button>
+            </td>
+            <td>
+                <button [routerLink]="['/blog']">Blog items</button> 
+            </td>
+            <td>
+                <button [routerLink]="['/user']">Profile</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+
 <router-outlet></router-outlet>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Bloginterface } from '../../models/bloginterface';
 
 @Component({
   selector: 'app-blog-list',

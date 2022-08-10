@@ -1,1 +1,21 @@
-<p>book-item works!</p>
+<button type="button" (click)="getBooks()">Book List</button>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Authors</th>
+        <th>Isbn</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let data of bookList">
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.authors}}</td>
+        <td>{{data.isbn}}</td>
+        <td><button class="button">Edit</button><br><button class="danger">Delete</button></td>
+    </tr>
+</table>
+
+
+
+
