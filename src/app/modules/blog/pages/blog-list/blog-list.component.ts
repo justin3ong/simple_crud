@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Bloginterface } from '../../models/bloginterface';
 
 @Component({
@@ -7,7 +7,7 @@ import { Bloginterface } from '../../models/bloginterface';
   styleUrls: ['./blog-list.component.scss']
 })
 export class BlogListComponent implements OnInit {
-
+  @Input () blog:Bloginterface | undefined
   constructor() { }
 
   ngOnInit(): void {

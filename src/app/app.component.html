@@ -1,24 +1,27 @@
-<h1>Angular Exercise</h1>
-<div>
-    <table>
-        <tr>
-            <td>Book</td>
-            <td>Blog</td>
-            <td>User</td>
-        </tr>
-        <tr>
-            <td>
-                <button [routerLink]="['/book']">Book items</button>
-            </td>
-            <td>
-                <button [routerLink]="['/blog']">Blog items</button> 
-            </td>
-            <td>
-                <button [routerLink]="['/user']">Profile</button>
-            </td>
-        </tr>
-    </table>
-</div>
-<br>
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space">
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+      (mouseover)="menuTrigger.openMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger.closeMenu()">
+        <button mat-menu-item [routerLink]="['/book']">
+          <span>Book</span>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+        <button mat-menu-item [routerLink]="['/blog']">
+          <span>Blog</span>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+        <button mat-menu-item [routerLink]="['/user']">
+          <span>Profile</span>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+      </span>
+    </mat-menu>
+  </span>
+  <span class="fill-remaining-space">Angular Exercise</span>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

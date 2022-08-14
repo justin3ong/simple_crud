@@ -1,19 +1,28 @@
-<button type="button" (click)="getBlogs()">Book List</button>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Comments</th>
-        <th>Actions</th>
-    </tr>
-    <tr *ngFor="let data of blogList">
-        <td>{{data.id}}</td>
-        <td>{{data.title}}</td>
-        <td>{{data.description}}</td>
-        <td>{{data.author}}</td>
-        <td>{{data.comments}}</td>
-        <td><button class="button">Edit</button><br><button class="danger">Delete</button></td>
-    </tr>
-</table>
+<div class="container">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">Comments</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of blogList, let i = index">
+                <td>{{data.id}}</td>
+                <td>{{data.title}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.author}}</td>
+                <td>{{data.comments}}</td>
+                <td><button class="btn btn-success" (click)="editAction(i)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteAction(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button class="btn btn-primary" [routerLink]="['/blog/add-item']">Add Items</button>
+</div>

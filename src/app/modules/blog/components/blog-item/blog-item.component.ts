@@ -9,13 +9,20 @@ import { BlogService } from '../../services/blog.service';
 })
 export class BlogItemComponent implements OnInit {
   blogList: Bloginterface[] = [];
-  constructor(private blogService: BlogService) { }
+
+  editValue: number = 3;
+  constructor(private blogService: BlogService) {
+    this.blogList = this.blogService.getBlogs();
+  }
 
   ngOnInit(): void {
   }
 
-  getBlogs() {
-    this.blogList = this.blogService.getBlogs();
+  deleteAction(index: number) {
+    return this.blogList.splice(index, 1);
   }
 
+  editAction(index: number){
+  return this.blogList[index].id=this.editValue;
+  }
 }

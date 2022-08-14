@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+    <form [formGroup]="newForm" (ngSumbit)="submit()">
+        <div class="form-group">
+            <label for="id">Id:</label>
+            <input formControlName="id" class="form-control" type="number" id="id" name="id">
+            <div *ngIf="id?.invalid && (id?.dirty || id?.touched)" class="text-danger">
+                <div *ngIf="id?.errors?.['required']">
+                    Id number is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" class="form-control" type="text" id="name" name="name">
+            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="text-danger">
+                <div *ngIf="name?.errors?.['required']">
+                    Name is required
+                </div>
+            </div>
+        </div>
+        <ng-container formArrayName="author">
+            <label for="author">Authors: </label><br>
+            <div class="input-group mb-3" *ngFor="let group of authorFormArray.controls; index as i">
+                <input [formControlName]="i" class="form-control">
+                <button class="btn btn-danger" (click)="deleteAuthor(i)">Delete</button>
+            </div>
+            <button class="btn btn-info btn-sm" (click)="addAuthor()">Add Author</button>
+        </ng-container>
+
+        <br>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input formControlName="name" class="form-control" type="text" id="isbn" name="isbn">
+        </div>
+        <div *ngIf=""></div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-info" (click)="clear()">Clear</button>
+        <button class="btn btn-danger" [routerLink]="['/book']" (click)="clear()">Delete Form</button>
+    </form>
+</div>

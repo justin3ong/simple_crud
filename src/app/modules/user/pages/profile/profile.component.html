@@ -1,20 +1,50 @@
-<div>
-    <form action="/action_page.php">
+<div class="container">
+  <br>  
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="form-group">
       <label for="email">Email</label>
-      <input type="text" id="email" name="email" placeholder="Your email..">
-  
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Your name..">
+      <input formControlName="email" class="form-control" type="text" id="email" name="email"
+        placeholder="Your email..">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+        <div *ngIf="email?.errors?.['required']">
+          Email is required
+        </div>
+        <div *ngIf="email?.errors?.['email']">
+          Invalid email format
+        </div>
+      </div>
+    </div>
 
+    <br>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input formControlName="name" class="form-control" type="text" id="name" name="name" placeholder="Your name..">
+      <div *ngIf="name?.invalid && (name.dirty || name.touched)" class="text-danger">
+        <div *ngIf="name?.errors?.['required']">
+          Name is required
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
       <label for="bio">Bio</label>
-      <input type="text" id="bio" name="bio" placeholder="Bio..">
-  
+      <input formControlName="bio" class="form-control" type="text" id="bio" name="bio" placeholder="Bio..">
+      <div *ngIf="bio?.invalid && (bio.dirty || bio.touched)" class="text-danger">
+        Bio is required
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
       <label for="active">Active?</label>
-      <select id="active" name="active" aria-placeholder="Yes">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-    
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+      <input formControlName="active" class="form-control" type="text" id="active" name="active" placeholder="Active">
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit">Submit</button>
+    <button class="btn btn-info" type="button" (click)="clear()">Clear</button>
+  </form>
+</div>

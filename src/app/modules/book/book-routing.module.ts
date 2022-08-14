@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { BookListComponent } from './pages/book-list/book-list.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
+import { NewformComponent } from './newform/newform.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: "item",
     component: BookItemComponent
+  },
+  {
+    path: "add-item",
+    component: NewformComponent
   }
 ]
 

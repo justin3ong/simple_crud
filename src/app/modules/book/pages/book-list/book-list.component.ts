@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Bookinterface } from '../../models/bookinterface';
+
 
 @Component({
   selector: 'app-book-list',
@@ -7,10 +8,14 @@ import { Bookinterface } from '../../models/bookinterface';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-
+  
+  
+  
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }
