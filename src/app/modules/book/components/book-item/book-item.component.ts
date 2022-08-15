@@ -11,25 +11,25 @@ import { BookService } from '../../services/book.service';
 })
 export class BookItemComponent implements OnInit {
   bookList: Bookinterface[] = [];
-  @Input () book:Bookinterface | undefined
-  //change id number here, put reactive form later
-  editValue : number = 3;
+  @Input() book: Bookinterface | undefined
 
   constructor(private bookService: BookService) {
     this.bookList = this.bookService.getBooks()
   }
   ngOnInit(): void {
   }
-  
-  deleteAction(index:number){
-    return this.bookList.splice(index,1);
-  }
-  
 
-  editAction(index: number){
-  return this.bookList[index].id=this.editValue;
+  deleteAction(index: number) {
+    return this.bookList.splice(index, 1);
   }
-  
+
+  addNewForm(newForm: FormGroup) {
+    this.bookList.push(newForm.value);
+  }
+  show: boolean = false;
+  showForm() {
+    this.show = !this.show
+  }
 
 }
 
