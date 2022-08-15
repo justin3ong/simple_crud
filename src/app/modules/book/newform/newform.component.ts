@@ -1,6 +1,5 @@
-import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-newform',
@@ -8,39 +7,62 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./newform.component.scss']
 })
 export class NewformComponent implements OnInit {
-  newForm: FormGroup;
-  authorFormArray: FormArray;
+  idOutput: string | undefined;
+  nameOutput: string | undefined;
+  authorOutput: string[] | undefined;
+  isbnOutput: string | undefined;
+
+  newForm: FormGroup; 
+  authorForms: FormArray;
   constructor(private fb: FormBuilder) {
     this.newForm = this.fb.group({
       id: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      author: this.fb.array([]),
+      authors: this.fb.array([]),
       isbn: ['', [Validators.required]]
     });
-    this.authorFormArray = this.newForm.get('author') as FormArray
-  }
-
-  submit(): void {
-    console.log(this.newForm?.value);
+    this.newForm.valueChanges.subscribe(console.log);
+    this.authorForms = this.newForm.get('authors') as FormArray;
   }
   ngOnInit(): void {
   }
-  addAuthor(){
-    this.authorFormArray.push(new FormControl(''))
+
+  addAuthor() {
+    const author = this.fb.group({
+      authorName: [''],
+    });
+    this.authorForms.push(author);
   }
-  deleteAuthor(i: number){
-    this.authorFormArray.removeAt(i);
+
+
+  submit(): void {
+    console.log(this.newForm.value);
+    this.idOutput = this.newForm.value.id;
+    this.nameOutput = this.newForm.value.name;
+    this.authorOutput = this.newForm.value.author;
+    this.isbnOutput = this.newForm.value.isbn;
   }
-  get id(){
-    return this.newForm.get('id') as FormControl;
+
+
+
+
+  deleteAuthor(i: number) {
+    this.authorForms.removeAt(i);
   }
-  get name(){
-    return this.newForm.get('name') as FormControl;
+  get id() {
+    return this.newForm?.get('id') as FormControl;
   }
-  get author(){
-    return this.authorFormArray.get('author')
+  get name() {
+    return this.newForm?.get('name') as FormControl;
   }
-  clear(): void{
-    this.newForm.reset(); 
+
+  get isbn(){
+    return this.newForm?.get('isbn') as FormControl
   }
+
+  clear(): void {
+    this.newForm?.reset();
+  }
+
+
 }

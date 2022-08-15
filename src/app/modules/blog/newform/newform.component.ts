@@ -8,28 +8,31 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class NewformComponent implements OnInit {
   newForm: FormGroup;
-  authorFormArray: FormArray;
+  commentForms: FormArray;
   constructor(private fb: FormBuilder) {
     this.newForm = this.fb.group({
       id: ['', [Validators.required]],
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      comment: this.fb.array([]),
+      comments: this.fb.array([]),
       isbn: ['', [Validators.required]]
     });
-    this.authorFormArray = this.newForm.get('comment') as FormArray
+    this.commentForms = this.newForm.get('comments') as FormArray;
+    this.newForm.valueChanges.subscribe(console.log);
   }
-
   submit(): void {
-    console.log(this.newForm?.value);
+    console.log(this.newForm.value);
   }
   ngOnInit(): void {
   }
   addComment(){
-    this.authorFormArray.push(new FormControl(''))
+    const comment = this.fb.group({
+      newComment: ['']
+    });
+    this.commentForms.push(comment);
   }
   deleteAuthor(i: number){
-    this.authorFormArray.removeAt(i);
+    this.commentForms.removeAt(i);
   }
   get id(){
     return this.newForm.get('id') as FormControl;
@@ -39,9 +42,6 @@ export class NewformComponent implements OnInit {
   }
   get description(){
     return this.newForm.get('description') as FormControl;
-  }
-  get comments(){
-    return this.authorFormArray.get('comments')
   }
   clear(): void{
     this.newForm.reset(); 

@@ -29,18 +29,17 @@
             </div>
         </div>
         <ng-container formArrayName="comments">
-            <label for="comments">Comments: </label><br>
-            <div class="input-group mb-3" *ngFor="let group of authorFormArray.controls; index as i">
-                <input [formControlName]="i" class="form-control">
+            <label for="comment">Comments: </label><br>
+            <div class="input-group mb-3" *ngFor="let group of commentForms.controls; index as i" [formGroupName]="i">
+                <input  class="form-control" formControlName="newComment">
                 <button class="btn btn-danger" (click)="deleteAuthor(i)">Delete</button>
             </div>
             <button class="btn btn-info btn-sm" (click)="addComment()">Add Comment</button>
         </ng-container>
-
         <br>
         <div class="form-group">
             <label for="isbn">ISBN:</label>
-            <input formControlName="name" class="form-control" type="text" id="isbn" name="isbn">
+            <input formControlName="isbn" class="form-control" type="text" id="isbn" name="isbn">
         </div>
         <div *ngIf=""></div>
         <button class="btn btn-primary" type="submit">Submit</button>
