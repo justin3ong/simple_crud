@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-newform',
   templateUrl: './newform.component.html',
@@ -11,40 +10,34 @@ export class NewformComponent implements OnInit, AfterViewInit {
   @Output() newFormDataEvent = new EventEmitter<FormGroup>();
   router: any;
 
-  addNewFormData(data: FormGroup){
+  addNewFormData(data: FormGroup["value"]){
     this.newFormDataEvent.emit(data);
   }
 
   newForm: FormGroup; 
-  authorForms: FormArray;
   constructor(private fb: FormBuilder) {
     this.newForm = this.fb.group({
       id: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      authors: this.fb.array([]),
+      title: ['', [Validators.required]],
+      authors: ['', Validators.required],
       isbn: ['', [Validators.required]]
     });
     this.newForm.valueChanges.subscribe(console.log);
-    this.authorForms = this.newForm.get('authors') as FormArray;
   }
+
+
   ngOnInit(): void {
   }
 
-  addAuthor() {
-    const author = this.fb.group({
-      authorName: [''],
-    });
-    this.authorForms.push(author);
+  get authors(){
+    return this.newForm.get('authors') as FormControl;
   }
 
-  deleteAuthor(i: number) {
-    this.authorForms.removeAt(i);
-  }
   get id() {
     return this.newForm?.get('id') as FormControl;
   }
-  get name() {
-    return this.newForm?.get('name') as FormControl;
+  get title() {
+    return this.newForm?.get('title') as FormControl;
   }
 
   get isbn(){
@@ -56,6 +49,6 @@ export class NewformComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-  }
 
+  }
 }

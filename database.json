@@ -1,24 +1,33 @@
 {
     "books" :[
         {
+            "id": 1,
             "title": "Harry Potter",
-            "author": "J.K. Rowling"
+            "authors": "J.K. Rowling",
+            "isbn": "hp1"
         },
         {
+            "id": 2,
             "title": "Time Keeper",
-            "author": ""
+            "authors": "unknown",
+            "isbn": "tk2"
         },
         {
+            "id": 3,
             "title": "Sleep Walker",
-            "author": ""
+            "authors": "Chris B.",
+            "isbn": "sw3"
         },
         {
+            "id": 4,
             "title": "Inferno",
-            "author": "Dan Brown"
+            "authors": "Dan Brown",
+            "isbn": "io4"
         }
     ],
     "blogs" : [
         {
+            "id": 1,
             "title": "Angular 13 Tutorial",
             "description": "Discussing the basics of Angular"
         },
@@ -29,6 +38,11 @@
         {
             "title": "SSR using Universal",
             "description": "Server side using Angular Universan and Azure"
+        },
+        {
+            "title": "Payaman",
+            "description": "Cong TV Blog"
         }
+        
     ]
 }

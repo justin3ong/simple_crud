@@ -5,6 +5,7 @@ import { BookItemComponent } from './components/book-item/book-item.component';
 import { BookRoutingModule } from './book-routing.module';
 import { NewformComponent } from './newform/newform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditformComponent } from './editform/editform.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     BookListComponent,
     BookItemComponent,
-    NewformComponent
+    NewformComponent,
+    EditformComponent
   ],
   imports: [
     CommonModule,BookRoutingModule,FormsModule,

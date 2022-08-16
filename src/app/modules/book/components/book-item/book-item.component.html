@@ -2,9 +2,9 @@
     <table class="table table-hover">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Authors</th>
+                <th scope="col">Id</th> 
+                <th scope="col">Title</th>
+                <th scope="col">Author/s</th>
                 <th scope="col">Isbn</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -12,14 +12,14 @@
         <tbody>
             <tr *ngFor="let data of bookList, let i = index">
                 <td>{{data.id}}</td>
-                <td>{{data.name}}</td>
+                <td>{{data.title}}</td>
                 <td>{{data.authors}}</td>
                 <td>{{data.isbn}}</td>
-                <td><button class="btn btn-success">Edit</button>
+                <td><button class="btn btn-success" (click)="showEdit(i)" >Edit</button>
                     <button class="btn btn-danger" (click)="deleteAction(i)">Delete</button>
                 </td>
             </tr>
-        </tbody>
+        </tbody>    
     </table>
     <br>
     <button class="btn btn-primary" (click)="showForm()">Add Items</button>
@@ -27,4 +27,9 @@
 <div *ngIf="show">
     <app-newform (newFormDataEvent)="addNewForm($event)"></app-newform>
 </div>
+
+<div *ngIf="edit">
+    <app-editform (editFormDataEvent)="addeditForm($event)"></app-editform>
+</div>
+
 

@@ -1,7 +1,8 @@
 <br>
+
 <div class="container">
-    <p><b>New Item Form</b></p>
-    <form [formGroup]="newForm">
+    <p><b>Edit Form</b></p>
+    <form [formGroup]="editForm">
         <div class="form-group">
             <label for="id">Id:</label>
             <input formControlName="id" class="form-control" type="number" id="id" name="id">
@@ -39,7 +40,7 @@
                 ISBN is required
             </div>
         </div>
-        <button class="btn btn-success" (click)="addNewFormData(newForm.value)">Submit</button>
+        <button class="btn btn-success" (click)="addeditFormData(editForm.value)">Submit</button>
         <button class="btn btn-info" (click)="clear()">Clear</button>
     </form>
 </div>
